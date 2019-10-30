@@ -20,3 +20,12 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Punch {
+  background-color: dimgrey;
+  color: aquamarine;
+}
+
+header {
+  background-color: darkslategrey;
+}
