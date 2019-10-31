@@ -2,6 +2,11 @@ import React from "react";
 import Button from "./Button";
 
 class ButtonPanel extends React.Component {
+
+  state = {
+    buttonName: ''
+  }
+
   render() {
     return (
       <div>
