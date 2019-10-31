@@ -4,9 +4,8 @@ function Display(props) {
   const { result } = props;
 
   return (
-    <div>
-      <h3>Display Component</h3>
-      <p>{result}</p>
+    <div className="Display">
+      <p>{result}0</p>
     </div>
   );
 }

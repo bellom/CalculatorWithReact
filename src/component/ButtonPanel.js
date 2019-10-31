@@ -1,42 +1,42 @@
 import React from "react";
 import Button from "./Button";
+import '../App.css';
 
 class ButtonPanel extends React.Component {
+
   render() {
     return (
       <div>
-        <h3>ButtonPanel Component</h3>
-        <div>
-          <Button buttonName="AC" />
-          <Button buttonName="+/-" />
-          <Button buttonName="%" />
+        <div className="Button">
+          <Button buttonName="AC" color='grey'/>
+          <Button buttonName="+/-" color='grey' />
+          <Button buttonName="%" color='grey' />
           <Button buttonName="÷" />
         </div>
 
-        <div>
-          <Button buttonName="7" />
-          <Button buttonName="8" />
-          <Button buttonName="9" />
+        <div className="Button">
+          <Button buttonName="7" color='grey' />
+          <Button buttonName="8" color='grey' />
+          <Button buttonName="9" color='grey' />
           <Button buttonName="x" />
         </div>
 
-        <div>
-          <Button buttonName="4" />
-          <Button buttonName="5" />
-          <Button buttonName="6" />
+        <div className="Button">
+          <Button buttonName="4" color='grey' />
+          <Button buttonName="5" color='grey' />
+          <Button buttonName="6" color='grey' />
           <Button buttonName="-" />
         </div>
 
-        <div>
-          <Button buttonName="1" />
-          <Button buttonName="2" />
-          <Button buttonName="3" />
+        <div className="Button">
+          <Button buttonName="1" color='grey' />
+          <Button buttonName="2" color='grey' />
+          <Button buttonName="3" color='grey' />
           <Button buttonName="+" />
         </div>
-
-        <div>
-          <Button buttonName="0" />
-          <Button buttonName="." />
+        <div className="Button">
+          <Button buttonName="0" color='grey' wide />
+          <Button buttonName="." color='grey'/>
           <Button buttonName="=" />
         </div>
       </div>

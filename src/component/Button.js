@@ -1,12 +1,18 @@
 import React from "react";
 
 function Button(props) {
-  const { buttonName } = props;
+  const { buttonName, color, wide } = props;
+  const buttonColor = color === "grey" ? "grey" : "orange"
+  const buttonWide = wide ? "50%" : ""
+  console.log(wide)
   return (
-    <div>
-      <button>{buttonName}</button>
-    </div>
+    <button 
+      className="Button" 
+      style={{backgroundColor: buttonColor, width: buttonWide}}
+    >{buttonName}
+    </button>
   );
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 export default Button;
+
