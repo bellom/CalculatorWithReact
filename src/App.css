@@ -3,30 +3,30 @@ button {
 }
 
 .Button {
-  color: #000000;
-  border: 1px solid #000000;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  border: 1px solid #000000;
+  color: #000000;
+  display: flex;
   font-size: 1.5em;
   height: 100px;
+  justify-content: center;
 }
 .container {
   display: flex;
-  width: 700px;
-  text-align: center;
   flex-direction: column;
+  text-align: center;
+  width: 700px;
 }
 
 .Display {
-  display: flex;
-  justify-content: flex-end;
   align-items: flex-start;
-  padding: 20px;
   background: gray;
-  height: 100px;
   color:white;
-  text-align: center;
+  display: flex;
+  font-size: 3.5em;
+  height: 100px;
+  justify-content: flex-end;
   margin-bottom: 1px;
-  font-size: -webkit-xxx-large;
+  padding: 20px;
+  text-align: center;
 }
