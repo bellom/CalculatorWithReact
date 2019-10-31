@@ -1,3 +1,5 @@
+A simple web app calculator built with React. It contains all the core functionalities of a calculator.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
