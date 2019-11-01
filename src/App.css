@@ -1,5 +1,6 @@
 button {
   width: 25%;
+  height: 100px;
 }
 
 .Button {
@@ -8,7 +9,6 @@ button {
   color: #000000;
   display: flex;
   font-size: 1.5em;
-  height: 100px;
   justify-content: center;
 }
 .container {
@@ -21,7 +21,6 @@ button {
 .Display {
   align-items: flex-start;
   background: gray;
-  box-sizing: inherit;
   color:white;
   display: flex;
   font-size: 3.5em;
