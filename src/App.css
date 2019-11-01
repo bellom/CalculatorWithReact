@@ -1,6 +1,6 @@
 button {
-  width: 25%;
   height: 100px;
+  width: 25%;
 }
 
 .Button {
@@ -24,9 +24,12 @@ button {
   color:white;
   display: flex;
   font-size: 3.5em;
-  height: 100px;
   justify-content: flex-end;
   margin-bottom: 1px;
   padding: 20px;
   text-align: center;
+}
+
+.setHeight {
+  height: 100px;
 }
