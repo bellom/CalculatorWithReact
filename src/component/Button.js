@@ -4,7 +4,7 @@ function Button(props) {
   const { buttonName, color, wide } = props;
   const buttonColor = color === "grey" ? "grey" : "orange"
   const buttonWide = wide ? "50%" : ""
-  console.log(wide)
+  
   return (
     <button 
       className="Button" 
