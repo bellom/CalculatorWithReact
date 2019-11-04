@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function calculate({total, next, operation}, buttonName){
+function calculate({total, next, operation}, buttonName) {
 
 }
 

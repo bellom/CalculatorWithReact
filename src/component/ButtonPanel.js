@@ -8,36 +8,36 @@ class ButtonPanel extends React.Component {
     return (
       <div>
         <div className="Button row">
-          <Button buttonName="AC" color='grey'/>
-          <Button buttonName="+/-" color='grey' />
-          <Button buttonName="%" color='grey' />
-          <Button buttonName="÷" />
+          <Button name="AC" color='grey'/>
+          <Button name="+/-" color='grey' />
+          <Button name="%" color='grey' />
+          <Button name="÷" />
         </div>
 
         <div className="Button row">
-          <Button buttonName="7" color='grey' />
-          <Button buttonName="8" color='grey' />
-          <Button buttonName="9" color='grey' />
-          <Button buttonName="x" />
+          <Button name="7" color='grey' />
+          <Button name="8" color='grey' />
+          <Button name="9" color='grey' />
+          <Button name="x" />
         </div>
 
         <div className="Button row">
-          <Button buttonName="4" color='grey' />
-          <Button buttonName="5" color='grey' />
-          <Button buttonName="6" color='grey' />
-          <Button buttonName="-" />
+          <Button name="4" color='grey' />
+          <Button name="5" color='grey' />
+          <Button name="6" color='grey' />
+          <Button name="-" />
         </div>
 
         <div className="Button row">
-          <Button buttonName="1" color='grey' />
-          <Button buttonName="2" color='grey' />
-          <Button buttonName="3" color='grey' />
-          <Button buttonName="+" />
+          <Button name="1" color='grey' />
+          <Button name="2" color='grey' />
+          <Button name="3" color='grey' />
+          <Button name="+" />
         </div>
         <div className="Button row">
-          <Button buttonName="0" color='grey' wide />
-          <Button buttonName="." color='grey'/>
-          <Button buttonName="=" />
+          <Button name="0" color='grey' wide />
+          <Button name="." color='grey'/>
+          <Button name="=" />
         </div>
       </div>
     );

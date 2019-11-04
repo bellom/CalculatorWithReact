@@ -1,7 +1,7 @@
 import React from "react";
 
 function Button(props) {
-  const { buttonName, color, wide } = props;
+  const { name, color, wide } = props;
   const buttonColor = color === "grey" ? "grey" : "orange"
   const buttonWide = wide ? "50%" : ""
   
@@ -9,10 +9,10 @@ function Button(props) {
     <button 
       className="Button" 
       style={{backgroundColor: buttonColor, width: buttonWide}}
-    >{buttonName}
+    >{name}
     </button>
   );
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
 export default Button;
 
