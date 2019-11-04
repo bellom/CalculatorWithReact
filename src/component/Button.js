@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function Button(props) {
   const { buttonName, color, wide } = props;
@@ -13,6 +14,11 @@ function Button(props) {
     </button>
   );
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+Button.propTypes = {
+  buttonName: PropTypes.string
+};
+
 
 export default Button;
 
