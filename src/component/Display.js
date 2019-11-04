@@ -5,9 +5,15 @@ function Display(props) {
 
   return (
     <div className="Display setHeight">
-      <p>{result}0</p>
+      <p>{result}</p>
     </div>
   );
 }
+
+
+
+Display.defaultProps = {
+  result: '0'
+};
 
 export default Display;
