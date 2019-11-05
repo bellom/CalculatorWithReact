@@ -71,7 +71,7 @@ const calculate = (dataObject, buttonName) => {
     default:
       break;
   }
-  return dataObject;
+  return {total, next, operation};
 };
 
 export default calculate;
