@@ -1,4 +1,3 @@
-import React from "react";
 import Big from "big.js";
 
 const operate = (numberOne, numberTwo, operation) => {
@@ -7,22 +6,23 @@ const operate = (numberOne, numberTwo, operation) => {
   let result;
 
   switch (operation) {
-    case "÷":
-      if (b === "0") {
-        return "invalid operation";
+    case '÷':
+    case '%':
+      if (b === '0') {
+        return 'invalid operation';
       }
       result = a.div(b);
       break;
 
-    case "+":
+    case '+':
       result = a.plus(b);
       break;
 
-    case "x":
+    case 'x':
       result = a.times(b);
       break;
 
-    case "-":
+    case '-':
       result = a.minus(b);
       break;
 
