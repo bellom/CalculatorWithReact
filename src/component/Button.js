@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
 function Button(props) {
 
   const { name, color, wide } = props;
   const buttonColor = color
-  const buttonWide = wide ? "50%" : ""
+  const buttonWide = wide ? '50%' : ''
 
   return (
     <button 
-      className="Button" 
+      className='Button' 
       style={{backgroundColor: buttonColor, width: buttonWide}}
     >{name}
     </button>
