@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 function Display(props) {
   const { result } = props;
 
   return (
-    <div className="Display setHeight">
+    <div className='Display setHeight'>
       <p>{result}</p>
     </div>
   );
