@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
-function Display(props) {
-  const { result } = props;
+
+const Display = (props) => {
+  const { result, next, operation} = props;
 
   return (
     <div className='Display setHeight'>
-      <p>{result}</p>
+      <p> { next || result || operation || '0' } </p>
     </div>
   );
 }
@@ -14,6 +16,10 @@ function Display(props) {
 
 Display.defaultProps = {
   result: '0'
+};
+
+Display.propTypes = {
+  result: PropTypes.string.isRequired
 };
 
 export default Display;
