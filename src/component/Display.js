@@ -4,8 +4,7 @@ function Display(props) {
   const { result } = props;
 
   return (
-    <div>
-      <h3>Display Component</h3>
+    <div className="Display setHeight">
       <p>{result}</p>
     </div>
   );
