@@ -6,25 +6,26 @@ const operate = (numberOne, numberTwo, operation) => {
 
   let output;
   switch (operation) {
-    case '÷':
-      if (second.valueOf() === '0') {
-        return 'Not a number';
-      }
-      output = first.div(second).valueOf();
-      break;
-
+    
     case '-':
       output = first.minus(second).valueOf();
       break;
-
-    case '+':
-      output = first.plus(second).valueOf();
+      
+      case '+':
+        output = first.plus(second).valueOf();
+        break;
+        
+        case 'x':
+          output = first.times(second).valueOf();
+          break;
+          
+    case '÷':
+      if (second.valueOf() === '0') {
+        return 'Invalid Operation';
+      }
+      output = first.div(second).valueOf();
       break;
-
-    case 'x':
-      output = first.times(second).valueOf();
-      break;
-
+      
     default:
       break;
   }

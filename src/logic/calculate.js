@@ -1,103 +1,87 @@
-import operate from './operate';
+import operate from './operate.js';
 
 const calculate = (data, buttonName) => {
-  let newData = Object.assign({}, data);
+  let { total, next, operation} = data;
+
   switch (buttonName) {
+
     case 'AC':
-      newData = {
-        total: '',
-        next: null,
-        operation: null,
-        error: null,
-      };
+      total = '';
+      next = '';
       break;
 
     case '+/-':
-      if (newData.next) {
-        newData.next = (+newData.next * -1).toString();
+      next = next * -1;
+      if (total !== -0) {
+        total = total * -1;
       }
-      newData.total = (+newData.total * -1).toString();
+      break;
+
+    case '%':
+      if(next !== null) {
+        next = ((next / 100).toString());
+      }
+      total = ((total / 100).toString());      
       break;
 
     case '÷':
-    case '-':
-    case '+':
     case 'x':
-      if (newData.total && newData.next && newData.operation) {
-        if (newData.operation === '÷' && newData.next === '0') {
-          newData.total = null;
-          newData.next = null;
-          newData.operation = null;
-          newData.error = 'error';
-        } else {
-          newData.total = operate(newData.total, newData.next, newData.operation);
-          newData.next = null;
-          newData.operation = buttonName;
-        }
-      } else if (newData.total && newData.next === null) {
-        newData.operation = buttonName;
-      }
-      break;
-    case '%':
-      if (newData.next) {
-        newData.next = (+newData.next / 100).toString();
+    case '+':
+    case '-':
+      if (operation !== null && next !== null && total !== '') {
+        total = operate(total, next, operation);
+        operation = buttonName;
+        next = null;
       } else {
-        newData.total = (+newData.total / 100).toString();
+        operation = buttonName;
       }
-      break;
-    case '=':
-      if (newData.next) {
-        newData.total = operate(newData.total, newData.next, newData.operation);
-        newData.next = null;
-      }
-      newData.operation = buttonName;
-      break;
-    case '.':
-      if (newData.operation === '=') {
-        newData.total = '0.';
-        newData.next = null;
-        newData.operation = null;
-      }
-      if (!newData.next && !newData.operation) {
-        if (newData.total) {
-          if (!newData.total.split('').includes('.')) {
-            newData.total += '.';
-          }
-        } else {
-          newData.total = '0.';
-        }
-      } else if (newData.total && newData.operation) {
-        if (newData.next) {
-          if (!newData.next.split('').includes('.')) {
-            newData.next += '.';
-          }
-        } else {
-          newData.next = '0.';
-        }
+
+      if (next !== null) {
+        total = next;
+        next = null;
       }
       break;
 
-    default:
-      if (data.operation) {
-        if (data.operation === '=') {
-          newData = {
-            total: buttonName,
-            next: null,
-            operation: null,
-          };
-        } else {
-          newData.next = newData.next === null || newData.next === '0'
-            ? buttonName
-            : newData.next + buttonName;
-        }
-      } else {
-        newData.total = newData.total === null || newData.total === '0'
-          ? buttonName
-          : newData.total + buttonName;
+    case '=':
+      if (next !== null) {
+        total = operate(total, next, operation);
+        next = null
+      }
+      operation = null
+      break;
+
+    case '.':
+      if (next && !next.includes('.')) {
+        next += buttonName;
+      } else if (!next) {
+        next = '0.';
       }
       break;
+
+    case '0':
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
+      if(total === 'Invalid Operation') {
+        total = ''
+      }
+      if (next === null) {
+        next = '';
+      }
+      next += buttonName;
+
+      break;
+
+    default:
+      break;
   }
-  return newData;
+  return { total, next, operation};
 };
 
 export default calculate;

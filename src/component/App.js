@@ -22,7 +22,7 @@ class App extends React.Component{
 
     return (
       <div className='container'>
-        <h1>Simple Web Calculator</h1>
+        <h1>Simple Web Calculator<sub><span> with React</span></sub></h1>
         <Display result={total} next={next} />
         <ButtonPanel clickHandler={this.handleClick} />
       </div>

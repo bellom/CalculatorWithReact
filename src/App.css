@@ -3,7 +3,7 @@ button {
   width: 25%;
 }
 
-.Button {
+.Button:hover {
   align-items: center;
   border: 1px solid #000000;
   color: #000000;
