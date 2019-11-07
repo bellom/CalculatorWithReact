@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 
 const Display = (props) => {
-  const { result, next, operation} = props;
+  const { result, next, error} = props;
 
   return (
-    <div className='Display setHeight'>
-      <p> { next || result || operation || '0' } </p>
+    <div className='Display'>
+      { next || result || error || '0' }
     </div>
   );
 }

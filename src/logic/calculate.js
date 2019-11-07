@@ -1,77 +1,103 @@
 import operate from './operate';
 
-const calculate = (dataObject, buttonName) => {
-  let { total, next, operation } = dataObject;
-
-  if (total === 'invalid operation') {
-    total = '';
-  }
-
-  if (next === null) {
-    next = '';
-  }
-  next += buttonName;
-
+const calculate = (data, buttonName) => {
+  let newData = Object.assign({}, data);
   switch (buttonName) {
     case 'AC':
-      total = '';
-      next = '';
-      operation = '';
+      newData = {
+        total: '',
+        next: null,
+        operation: null,
+        error: null,
+      };
       break;
+
     case '+/-':
-      total = Number(total);
-      total = String(total * -1);
+      if (newData.next) {
+        newData.next = (+newData.next * -1).toString();
+      }
+      newData.total = (+newData.total * -1).toString();
+      break;
+
+    case '÷':
+    case '-':
+    case '+':
+    case 'x':
+      if (newData.total && newData.next && newData.operation) {
+        if (newData.operation === '÷' && newData.next === '0') {
+          newData.total = null;
+          newData.next = null;
+          newData.operation = null;
+          newData.error = 'error';
+        } else {
+          newData.total = operate(newData.total, newData.next, newData.operation);
+          newData.next = null;
+          newData.operation = buttonName;
+        }
+      } else if (newData.total && newData.next === null) {
+        newData.operation = buttonName;
+      }
       break;
     case '%':
-      total = operate(total, 100, buttonName);
-      break;
-    case 'x':
-    case '+':
-    case '-':
-    case '÷':
-      if (total && next && operation) {
-        total = operation(total.next, operation);
-        next = null;
-        operation = buttonName;
-      } else if (total && next === null) {
-        operation = buttonName;
+      if (newData.next) {
+        newData.next = (+newData.next / 100).toString();
+      } else {
+        newData.total = (+newData.total / 100).toString();
       }
       break;
     case '=':
-      if (next) {
-        total = operation(total, next, operation);
-        next = null;
+      if (newData.next) {
+        newData.total = operate(newData.total, newData.next, newData.operation);
+        newData.next = null;
       }
-      operation = null;
+      newData.operation = buttonName;
       break;
     case '.':
-      if (next !== null) {
-        next = next + '.';
+      if (newData.operation === '=') {
+        newData.total = '0.';
+        newData.next = null;
+        newData.operation = null;
       }
-      total = total + '.';
+      if (!newData.next && !newData.operation) {
+        if (newData.total) {
+          if (!newData.total.split('').includes('.')) {
+            newData.total += '.';
+          }
+        } else {
+          newData.total = '0.';
+        }
+      } else if (newData.total && newData.operation) {
+        if (newData.next) {
+          if (!newData.next.split('').includes('.')) {
+            newData.next += '.';
+          }
+        } else {
+          newData.next = '0.';
+        }
+      }
       break;
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-    case '6':
-    case '7':
-    case '8':
-    case '9':
-      if (total === 'invalid operation') {
-        total = '';
-      }
-      if (next === 'null') {
-        next = '';
-      }
-      next += buttonName;
-      break;
+
     default:
+      if (data.operation) {
+        if (data.operation === '=') {
+          newData = {
+            total: buttonName,
+            next: null,
+            operation: null,
+          };
+        } else {
+          newData.next = newData.next === null || newData.next === '0'
+            ? buttonName
+            : newData.next + buttonName;
+        }
+      } else {
+        newData.total = newData.total === null || newData.total === '0'
+          ? buttonName
+          : newData.total + buttonName;
+      }
       break;
   }
-  return {total, next, operation};
+  return newData;
 };
 
 export default calculate;
