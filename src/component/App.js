@@ -8,24 +8,22 @@ class App extends React.Component{
 
   state = {
     total: '',
-    next: null,
-    operation: null,
-    error: null
+    next: '',
+    operation: ''
   };
 
   handleClick = buttonName => {
     this.setState(prevState => calculate(prevState, buttonName));
   };
 
-
   render() {
 
-    const {total, next, error} = this.state;
+    const {total, next} = this.state;
 
     return (
       <div className='container'>
         <h1>Simple Web Calculator</h1>
-        <Display result={total} next={next} error={error} />
+        <Display result={total} next={next} />
         <ButtonPanel clickHandler={this.handleClick} />
       </div>
     )
