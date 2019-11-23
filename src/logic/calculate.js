@@ -1,55 +1,63 @@
-import operate from 'operate';
+import operate from './operate.js';
 
-const calculate = (dataObject, buttonName) => {
-  let { total, next, operation } = dataObject;
-
-  if (total === 'invalid operation') {
-    total = '';
-  }
-
-  if (next === null) {
-    next = '';
-  }
-  next += buttonName;
+const calculate = (data, buttonName) => {
+  let { total, next, operation} = data;
 
   switch (buttonName) {
+
     case 'AC':
       total = '';
       next = '';
-      operation = '';
       break;
+
     case '+/-':
-      total = Number(total);
-      total = String(total * -1);
+      next = next * -1;
+      if (total !== -0) {
+        total = total * -1;
+      }
       break;
+
     case '%':
-      total = operate(total, 100, buttonName);
+      if(next !== null) {
+        next = ((next / 100).toString());
+      }
+      total = ((total / 100).toString());      
       break;
+
+    case '÷':
     case 'x':
     case '+':
     case '-':
-    case '÷':
-      if (total && next && operation) {
-        total = operation(total.next, operation);
-        next = null;
+      if (operation !== null && next !== null && total !== '') {
+        total = operate(total, next, operation);
         operation = buttonName;
-      } else if (total && next === null) {
+        next = null;
+      } else {
         operation = buttonName;
       }
-      break;
-    case '=':
-      if (next) {
-        total = operation(total, next, operation);
-        next = null;
-      }
-      operation = null;
-      break;
-    case '.':
+
       if (next !== null) {
-        next = next + '.';
+        total = next;
+        next = null;
       }
-      total = total + '.';
       break;
+
+    case '=':
+      if (next !== null) {
+        total = operate(total, next, operation);
+        next = null
+      }
+      operation = null
+      break;
+
+    case '.':
+      if (next && !next.includes('.')) {
+        next += buttonName;
+      } else if (!next) {
+        next = '0.';
+      }
+      break;
+
     case '0':
     case '1':
     case '2':
@@ -60,18 +68,20 @@ const calculate = (dataObject, buttonName) => {
     case '7':
     case '8':
     case '9':
-      if (total === 'invalid operation') {
-        total = '';
+      if(total === 'Invalid Operation') {
+        total = ''
       }
-      if (next === 'null') {
+      if (next === null) {
         next = '';
       }
       next += buttonName;
+
       break;
+
     default:
       break;
   }
-  return {total, next, operation};
+  return { total, next, operation};
 };
 
 export default calculate;
